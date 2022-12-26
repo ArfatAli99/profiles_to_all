@@ -1,0 +1,7 @@
+{
+  "name": "ATGPFMS_ionic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

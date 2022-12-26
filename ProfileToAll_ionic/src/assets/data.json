@@ -1,0 +1,14 @@
+{
+    "companies": [
+      {
+        "title": "Merck",
+        "slug": "merck",
+        "description": "Works for every user, regardless of browser choice because they’re built with progressive enhancement as a core tenant."
+      },
+      {
+        "title": "Welbilt",
+        "slug": "welbilt",
+        "description": "Fits any device or screen, desktop, mobile, tablet, or whatever is next."
+      }
+    ]
+}

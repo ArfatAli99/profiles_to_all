@@ -1,0 +1,997 @@
+
+
+<ion-content class="md hydrated" style="--offset-top:0px; --offset-bottom:0px;">
+  <form [formGroup]="travelerForm" >
+    <ion-row style="margin-top: 60px;">
+      <ion-col size="12" size-md="11" offset-md="0.5" size-lg="5.5" offset-lg="0.35"  >
+        <ion-card class="ion-margin-top">
+          <ion-card-header style="background-color: whitesmoke;">
+            Login
+          </ion-card-header>
+          <ion-card-content style="background-color: #f5faff;">
+            <ion-list> 
+              <ion-item>
+                <ion-label >Username</ion-label>
+                <ion-input type="text" aria-placeholder="Username" value=""></ion-input>
+              </ion-item>           
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="ion-margin-top">
+            <ion-card-header style="background-color: whitesmoke;">
+              Publishing
+            </ion-card-header>
+            <ion-card-content style="background-color: #f5faff;">
+              <ion-list>
+                <ion-item>
+                  <ion-label >Amadeus CSX Profile no.</ion-label>
+                </ion-item>                  
+              </ion-list>
+            </ion-card-content>
+        </ion-card>
+        <ion-card class="ion-margin-top">
+          <ion-card-header style="background-color: whitesmoke;">
+            General
+          </ion-card-header>
+          <ion-card-content style="background-color: #f5faff;">
+            <ion-list>
+              <ion-item>
+                <ion-label >Company</ion-label>
+                <ion-input type="text" aria-placeholder="Company" value=""></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Greeting</ion-label>
+                <ion-select >
+                  <ion-select-option value="nes"> - </ion-select-option>
+                  <!-- <ion-select-option value="n64">India</ion-select-option>
+                  <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Title</ion-label>
+                <ion-select >
+                  <ion-select-option value="nes"> - </ion-select-option>
+                  <!-- <ion-select-option value="n64">India</ion-select-option>
+                  <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label >Legal First Name</ion-label>
+                <ion-input type="text" aria-placeholder="Legal First Name" value=""></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label >Legal Middle Name</ion-label>
+                <ion-input type="text" aria-placeholder="Legal Middle Name" value=""></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label >Legal Last Name</ion-label>
+                <ion-input type="text" aria-placeholder="Legal Last Name" value=""></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label >Date of Birth</ion-label>
+                <ion-input type="text" aria-placeholder="Date of Birth" value=""></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label >Citizenship</ion-label>
+                <ion-input type="text" aria-placeholder="Citizenship" value=""></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Language</ion-label>
+                <ion-select >
+                  <ion-select-option value="nes"> - </ion-select-option>
+                  <!-- <ion-select-option value="n64">India</ion-select-option>
+                  <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label >Phone Business</ion-label>
+                <ion-input type="text" aria-placeholder="Citizenship" value=""></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label >Phone Home</ion-label>
+                <ion-input type="text" aria-placeholder="Citizenship" value=""></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label >Mobile</ion-label>
+                <ion-input type="text" aria-placeholder="Citizenship" value=""></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label >Email</ion-label>
+                <ion-input type="text" aria-placeholder="Citizenship" value=""></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Traveler</ion-label>
+                <ion-checkbox color="dark" checked="true"></ion-checkbox>
+              </ion-item>
+              <ion-item>
+                <ion-label>Arranger / Assistant</ion-label>
+                <ion-checkbox color="dark" checked="false"></ion-checkbox>
+              </ion-item>
+              <ion-item>
+                <ion-label>Approver</ion-label>
+                <ion-checkbox color="dark" checked="false"></ion-checkbox>
+              </ion-item>
+            </ion-list>
+              <ion-item-group formArrayName="credit_cards">
+                <ion-item-divider>
+                  <ion-label>Form of payment / credit cards</ion-label>
+                </ion-item-divider>
+                <ion-list *ngFor="let item of creditCards.controls | keyvalue; let pointIndex=index" [formGroupName]="pointIndex">
+                  <ion-item>
+                    <ion-label>Card Type</ion-label>
+                    <ion-select formControlName="card_type">
+                      <ion-select-option value="nes"> - </ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label fixed>Credit Card No.</ion-label>
+                    <ion-input type="text" aria-placeholder="Credit Card Number" formControlName="credit_card_no"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label fixed>Expiration</ion-label>
+                    <ion-input type="text" aria-placeholder="Expiration" formControlName="expiration"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label fixed>Remark</ion-label>
+                    <ion-input type="text" aria-placeholder="Remark" formControlName="remark"></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="item.key > 0" >
+                    <a class="remove_link" (click)="deleteCreditCard(pointIndex)" *ngIf="creditCards.length > 1" >remove</a>
+                  </ion-item>
+                </ion-list>                
+                <!-- <a href="">Add more</a> -->
+                <ion-item-divider>
+                  <ion-button color="success" fill="outline" (click)="addCreditCard()">
+                    Add more
+                </ion-button> 
+                </ion-item-divider>
+              </ion-item-group>
+            <ion-list>             
+              <ion-item>
+                <ion-label fixed> Other forms of payment</ion-label>
+                <ion-select >
+                  <ion-select-option value="nes"> - </ion-select-option>
+                  <!-- <ion-select-option value="n64">India</ion-select-option>
+                  <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                </ion-select>
+              </ion-item>
+              <ion-item-divider></ion-item-divider>
+              <ion-item>
+                <ion-label fixed>Custom Field</ion-label>
+                <ion-input type="text" aria-placeholder="Custom Field"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Local First Name</ion-label>
+                <ion-input type="text" aria-placeholder="Local First Name"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Local Last Name</ion-label>
+                <ion-input type="text" aria-placeholder="Local Last Name"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Traveler's Email 2</ion-label>
+                <ion-input type="text" aria-placeholder="Traveler's Email 2"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Traveler's Email 3</ion-label>
+                <ion-input type="text" aria-placeholder="Traveler's Email 3"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Business Phone Extension</ion-label>
+                <ion-input type="text" aria-placeholder="Business Phone Extension"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Approver Email</ion-label>
+                <ion-input type="text" aria-placeholder="Approver Email"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>VIP Indicator (for paid VIP services only)</ion-label>
+                <ion-select >
+                  <ion-select-option value="nes"> - </ion-select-option>
+                  <!-- <ion-select-option value="n64">India</ion-select-option>
+                  <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label class="ion-text-wrap">VIP Indicator (not related to paid services)</ion-label>
+                <ion-input type="text" aria-placeholder="VIP Indicator (not related to paid services)"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>HR Feed State</ion-label>
+                <ion-input type="text" aria-placeholder="HR Feed State"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="ion-margin-top">
+          <ion-card-header style="background-color: whitesmoke;">
+              Administration
+          </ion-card-header>
+          <ion-card-content style="background-color: #f5faff;">
+            
+            <ion-item-group formArrayName="arranger_assistances">
+              <ion-item-divider>
+                <ion-label>Arranger / Assistance</ion-label>
+              </ion-item-divider>
+              <ion-list *ngFor="let item of arrangerAssistances.controls | keyvalue; let pointIndex=index" [formGroupName]="pointIndex">
+                <ion-item>
+                  <ion-label fixed>Arranger / Assistance</ion-label>
+                  <ion-input type="text" aria-placeholder="Arranger / Assistance" formControlName="arranger_assistance"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="item.key > 0" >
+                  <a class="remove_link" (click)="deleteArrangerAssistances(pointIndex)" *ngIf="arrangerAssistances.length > 1" >remove</a>
+                </ion-item>
+              </ion-list>              
+              <!-- <a href="">Add more</a> -->
+              <ion-item-divider>
+                <ion-button color="success" fill="outline" (click)="addArrangerAssistance()">
+                  Add more
+                </ion-button> 
+              </ion-item-divider>
+            </ion-item-group>
+            <ion-item-group formArrayName="approvers">
+              <ion-item-divider>
+                <ion-label>Approver</ion-label>
+              </ion-item-divider>
+              <ion-list *ngFor="let item of Approvers.controls | keyvalue; let pointIndex=index" [formGroupName]="pointIndex">
+                <ion-item>
+                  <ion-label fixed>Approver</ion-label>
+                  <ion-input type="text" aria-placeholder="Approver" formControlName="approver"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="item.key > 0" >
+                  <a class="remove_link" (click)="deleteApprovers(pointIndex)" *ngIf="Approvers.length > 1" >remove</a>
+                </ion-item>
+              </ion-list>
+              <!-- <a href="">Add more</a> -->
+              <ion-item-divider>
+                <ion-button color="success" fill="outline" (click)="addApprover()">
+                  Add more
+                </ion-button> 
+              </ion-item-divider>
+            </ion-item-group> 
+            <ion-item-group formArrayName="emergency_contacts">
+              <ion-item-divider>
+                <ion-label>Emergency Contact</ion-label>
+              </ion-item-divider>
+              <ion-list *ngFor="let item of EmergencyContacts.controls | keyvalue; let pointIndex=index" [formGroupName]="pointIndex">
+                <ion-item>
+                  <ion-label fixed>First Name</ion-label>
+                  <ion-input type="text" aria-placeholder="First Name" formControlName="first_name"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>Last Name</ion-label>
+                  <ion-input type="text" aria-placeholder="Last Name" formControlName="surname"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>E-mail</ion-label>
+                  <ion-input type="text" aria-placeholder="E-mail" formControlName="email"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>Phone</ion-label>
+                  <ion-input type="text" aria-placeholder="Phone" formControlName="phone"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="item.key > 0" >
+                  <a class="remove_link" (click)="deleteEmergencyContact(pointIndex)" *ngIf="EmergencyContacts.length > 1" >remove</a>
+                </ion-item>
+              </ion-list>
+              <!-- <a href="">Add more</a> -->
+              <ion-item-divider>
+                <ion-button color="success" fill="outline" (click)="addEmergencyContact()">
+                  Add more
+                </ion-button> 
+              </ion-item-divider>
+            </ion-item-group>            
+            
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="ion-margin-top">
+          <ion-card-header style="background-color: whitesmoke;">
+              Travel Requests
+          </ion-card-header>
+          <ion-card-content style="background-color: #f5faff;">
+            <ion-list>
+              <ion-item>
+                <ion-label fixed>Air Request</ion-label>
+                <ion-input type="text" aria-placeholder="Air Request"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Hotel Request</ion-label>
+                <ion-input type="text" aria-placeholder="Hotel Request"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Car Request</ion-label>
+                <ion-input type="text" aria-placeholder="Car Request"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Rail Request</ion-label>
+                <ion-input type="text" aria-placeholder="Rail Request"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Seat Request</ion-label>
+                <ion-input type="text" aria-placeholder="Seat Request"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Medical Conditions</ion-label>
+                <ion-input type="text" aria-placeholder="Medical Conditions"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Medications</ion-label>
+                <ion-input type="text" aria-placeholder="Medications"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Allergies</ion-label>
+                <ion-input type="text" aria-placeholder="Allergies"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Wheelchair Request</ion-label>
+                <ion-select >
+                  <ion-select-option value="nes"> - </ion-select-option>
+                  <!-- <ion-select-option value="n64">India</ion-select-option>
+                  <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                </ion-select>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="ion-margin-top">
+          <ion-card-header style="background-color: whitesmoke;">
+              References for Invoice
+          </ion-card-header>
+          <ion-card-content style="background-color: #f5faff;">
+            <ion-list>
+              <ion-item>
+                <ion-label fixed>Cost Center</ion-label>
+                <ion-input type="text" aria-placeholder="Cost Center"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>MUID</ion-label>
+                <ion-input type="text" aria-placeholder="MUID"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Business Sector</ion-label>
+                <ion-select >
+                  <ion-select-option value="nes"> - </ion-select-option>
+                  <!-- <ion-select-option value="n64">India</ion-select-option>
+                  <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Division</ion-label>
+                <ion-input type="text" aria-placeholder="Division"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Location ID</ion-label>
+                <ion-input type="text" aria-placeholder="Location ID"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Department Identifier</ion-label>
+                <ion-input type="text" aria-placeholder="Department Identifier"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>CMG Number</ion-label>
+                <ion-input type="text" aria-placeholder="CMG Number"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Project Number</ion-label>
+                <ion-input type="text" aria-placeholder="Project Number"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>SAP Code</ion-label>
+                <ion-input type="text" aria-placeholder="SAP Code"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="ion-margin-top">
+          <ion-card-header style="background-color: whitesmoke;">
+              Home Address
+          </ion-card-header>
+          <ion-card-content style="background-color: #f5faff;">
+            <ion-list>
+              <ion-item>
+                <ion-label fixed>Street1</ion-label>
+                <ion-input type="text" aria-placeholder="Street1"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Street2</ion-label>
+                <ion-input type="text" aria-placeholder="Street2"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>City</ion-label>
+                <ion-input type="text" aria-placeholder="City"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>State</ion-label>
+                <ion-select >
+                  <ion-select-option value="nes"> - </ion-select-option>
+                  <!-- <ion-select-option value="n64">India</ion-select-option>
+                  <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Country</ion-label>
+                <ion-select >
+                  <ion-select-option value="nes"> - </ion-select-option>
+                  <!-- <ion-select-option value="n64">India</ion-select-option>
+                  <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                </ion-select>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>ZIP</ion-label>
+                <ion-input type="text" aria-placeholder="ZIP"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+        <ion-card class="ion-margin-top">
+          <ion-card-header style="background-color: whitesmoke;">
+              Unused Ticket Records
+          </ion-card-header>
+          <ion-card-content style="background-color: #f5faff;">
+            <ion-list>
+              <ion-item>
+                <ion-label fixed>Unused Ticket 1</ion-label>
+                <ion-input type="text" aria-placeholder="Unused Ticket 1"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Unused Ticket 2</ion-label>
+                <ion-input type="text" aria-placeholder="Unused Ticket 2"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Unused Ticket 3</ion-label>
+                <ion-input type="text" aria-placeholder="Unsued Ticket 3"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Unused Ticket 4</ion-label>
+                <ion-input type="text" aria-placeholder="Unused Ticket 4"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label fixed>Unused Ticket 5</ion-label>
+                <ion-input type="text" aria-placeholder="Unused Ticket 5"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" size-md="11" offset-md="0.5" size-lg="5.5" offset-lg="0.35" >
+          <ion-card class="ion-margin-top">
+              <ion-card-header style="background-color: whitesmoke;">
+                Preferences
+              </ion-card-header>
+              <ion-card-content style="background-color: #f5faff;">
+                <ion-list>
+                  <ion-item>
+                    <ion-label fixed>Seat Request</ion-label>
+                    <ion-select >
+                      <ion-select-option value="nes"> - </ion-select-option>
+                      <!-- <ion-select-option value="n64">India</ion-select-option>
+                      <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label fixed>Meal Request</ion-label>
+                    <ion-select >
+                      <ion-select-option value="nes"> - </ion-select-option>
+                      <!-- <ion-select-option value="n64">India</ion-select-option>
+                      <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>Smoker</ion-label>
+                    <ion-checkbox color="dark" checked="false"></ion-checkbox>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label fixed>Web card</ion-label>
+                    <ion-select >
+                      <ion-select-option value="nes"> - </ion-select-option>
+                      <!-- <ion-select-option value="n64">India</ion-select-option>
+                      <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                    </ion-select>
+                  </ion-item>
+                </ion-list>
+                <ion-item-group formArrayName="frequent_layers">
+                  <ion-item-divider>
+                    <ion-label>Frequent Flyer</ion-label>
+                  </ion-item-divider>
+                  <ion-list *ngFor="let item of FrequentLayers.controls | keyvalue; let pointIndex=index" [formGroupName]="pointIndex">
+                    <ion-item>
+                      <ion-label fixed>Airline</ion-label>
+                      <ion-select formControlName="airline">
+                        <ion-select-option value="nes"> - </ion-select-option>
+                        <!-- <ion-select-option value="n64">India</ion-select-option>
+                        <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                      </ion-select>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Number</ion-label>
+                      <ion-input type="text" aria-placeholder="Number" formControlName="number"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>PIN</ion-label>
+                      <ion-input type="text" aria-placeholder="PIN" formControlName="pin"></ion-input>
+                    </ion-item>
+                    <ion-item *ngIf="item.key > 0" >
+                      <a class="remove_link" (click)="deleteFrequentLayer(pointIndex)" *ngIf="FrequentLayers.length > 1" >remove</a>
+                    </ion-item>
+                  </ion-list>
+                  
+                  <ion-item-divider>
+                    <ion-button color="success" fill="outline" (click)="addFrequentLayer()">
+                      Add more
+                    </ion-button> 
+                  </ion-item-divider>
+                </ion-item-group>
+                <ion-item-group formArrayName="hotel_programs">
+                  <ion-item-divider>
+                    <ion-label>Hotel Program</ion-label>
+                  </ion-item-divider>
+                  <ion-list *ngFor="let item of HotelPrograms.controls | keyvalue; let pointIndex=index" [formGroupName]="pointIndex">
+                    <ion-item>
+                      <ion-label fixed>Hotel guarantee</ion-label>
+                      <ion-select formControlName="hotel_guarantee">
+                        <ion-select-option value="nes"> - </ion-select-option>
+                        <!-- <ion-select-option value="n64">India</ion-select-option>
+                        <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                      </ion-select>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label fixed>Hotel chain</ion-label>
+                      <ion-select formControlName="hotel_chain">
+                        <ion-select-option value="nes"> - </ion-select-option>
+                        <!-- <ion-select-option value="n64">India</ion-select-option>
+                        <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                      </ion-select>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Customer number</ion-label>
+                      <ion-input type="text" aria-placeholder="Customer number" formControlName="customer_no"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Customer request</ion-label>
+                      <ion-input type="text" aria-placeholder="Customer request" formControlName="customer_request"></ion-input>
+                    </ion-item>
+                    <ion-item *ngIf="item.key > 0" >
+                      <a class="remove_link" (click)="deleteHotelProgram(pointIndex)" *ngIf="HotelPrograms.length > 1" >remove</a>
+                    </ion-item>
+                  </ion-list>
+                  <ion-item-divider>
+                    <ion-button color="success" fill="outline" (click)="addHotelProgram()">
+                      Add more
+                    </ion-button> 
+                  </ion-item-divider>
+                </ion-item-group>
+                <ion-item-group formArrayName="car_programs">
+                  <ion-item-divider>
+                    <ion-label>Car Program</ion-label>
+                  </ion-item-divider>
+                  <ion-list *ngFor="let item of CarPrograms.controls | keyvalue; let pointIndex=index" [formGroupName]="pointIndex">
+                    <ion-item>
+                      <ion-label fixed>Guarantee rental car</ion-label>
+                      <ion-select formControlName="guarantee_rental_car">
+                        <ion-select-option value="nes"> - </ion-select-option>
+                        <!-- <ion-select-option value="n64">India</ion-select-option>
+                        <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                      </ion-select>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label fixed>Company</ion-label>
+                      <ion-select formControlName="company">
+                        <ion-select-option value="nes"> - </ion-select-option>
+                        <!-- <ion-select-option value="n64">India</ion-select-option>
+                        <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                      </ion-select>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Customer number</ion-label>
+                      <ion-input type="text" aria-placeholder="Customer number" formControlName="costomer_no"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Customer request</ion-label>
+                      <ion-input type="text" aria-placeholder="Customer request" formControlName="customer_request"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label fixed>Special request</ion-label>
+                      <ion-select formControlName="special_request">
+                        <ion-select-option value="nes"> - </ion-select-option>
+                        <!-- <ion-select-option value="n64">India</ion-select-option>
+                        <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                      </ion-select>
+                    </ion-item>
+                    <ion-item *ngIf="item.key > 0" >
+                      <a class="remove_link" (click)="deleteCarProgram(pointIndex)" *ngIf="CarPrograms.length > 1" >remove</a>
+                    </ion-item>
+                  </ion-list>
+                  <ion-item-divider>
+                    <ion-button color="success" fill="outline" (click)="addCarProgram()">
+                      Add more
+                    </ion-button> 
+                  </ion-item-divider>
+                </ion-item-group>
+                <ion-list>
+                  <ion-item>
+                    <ion-label fixed>Car Type Preference</ion-label>
+                    <ion-select >
+                      <ion-select-option value="nes"> - </ion-select-option>
+                      <!-- <ion-select-option value="n64">India</ion-select-option>
+                      <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Hotel Room Preference</ion-label>
+                    <ion-select >
+                      <ion-select-option value="nes"> - </ion-select-option>
+                      <!-- <ion-select-option value="n64">India</ion-select-option>
+                      <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>Preferred Departure Airport Code</ion-label>
+                    <ion-input type="text" aria-placeholder="Preferred Departure Airport Code" value=""></ion-input>
+                  </ion-item>
+                </ion-list>
+                
+              </ion-card-content>
+          </ion-card>
+          <ion-card class="ion-margin-top">
+              <ion-card-header style="background-color: whitesmoke;">
+                  Rail information
+              </ion-card-header>
+              <ion-card-content style="background-color: #f5faff;">
+                <ion-list>
+                  <ion-item>
+                    <ion-label >Delivery</ion-label>
+                    <ion-select >
+                      <ion-select-option value="nes"> - </ion-select-option>
+                      <!-- <ion-select-option value="n64">India</ion-select-option>
+                      <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Wagontype</ion-label>
+                    <ion-select >
+                      <ion-select-option value="nes"> - </ion-select-option>
+                      <!-- <ion-select-option value="n64">India</ion-select-option>
+                      <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Wagon extra</ion-label>
+                    <ion-select >
+                      <ion-select-option value="nes"> - </ion-select-option>
+                      <!-- <ion-select-option value="n64">India</ion-select-option>
+                      <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Seat</ion-label>
+                    <ion-select >
+                      <ion-select-option value="nes"> - </ion-select-option>
+                      <!-- <ion-select-option value="n64">India</ion-select-option>
+                      <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                    </ion-select>
+                  </ion-item>
+                </ion-list>
+                <ion-item-group formArrayName="rail_cards">
+                  <ion-list *ngFor="let item of RailCards.controls | keyvalue; let pointIndex=index" [formGroupName]="pointIndex">
+                    <ion-item>
+                      <ion-label >Card</ion-label>
+                      <ion-select formControlName="card">
+                        <ion-select-option value="nes"> - </ion-select-option>
+                        <!-- <ion-select-option value="n64">India</ion-select-option>
+                        <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                      </ion-select>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Number</ion-label>
+                      <ion-input type="text" aria-placeholder="Number" formControlName="number"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Expirationr</ion-label>
+                      <ion-input type="text" aria-placeholder="Expirationr" formControlName="expiration"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Collect points</ion-label>
+                      <ion-checkbox color="dark"  formControlName="collect_points"></ion-checkbox>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label >Class</ion-label>
+                      <ion-select formControlName="rail_class">
+                        <ion-select-option value="nes"> - </ion-select-option>
+                        <!-- <ion-select-option value="n64">India</ion-select-option>
+                        <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                      </ion-select>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Valid from station</ion-label>
+                      <ion-input type="text" aria-placeholder="Valid from station" formControlName="valid_from_station"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Valid to station</ion-label>
+                      <ion-input type="text" aria-placeholder="Valid to station" formControlName="valid_to_station"></ion-input>
+                    </ion-item>
+                    <ion-item *ngIf="item.key > 0" >
+                      <a class="remove_link" (click)="deleteRailCard(pointIndex)" *ngIf="RailCards.length > 1" >remove</a>
+                    </ion-item>
+                  </ion-list>
+                  <ion-item-divider>
+                    <ion-button color="success" fill="outline" (click)="addRailCard()">
+                      Add more
+                    </ion-button> 
+                  </ion-item-divider>
+                </ion-item-group>
+              </ion-card-content>
+          </ion-card>
+          <ion-card class="ion-margin-top">
+            <ion-card-header style="background-color: whitesmoke;">
+              Travel documents
+            </ion-card-header>
+            <ion-card-content style="background-color: #f5faff;">
+                              
+              <ion-item-group formArrayName="traveler_passports">
+                <ion-item-divider>
+                  <ion-label>Passport(s)</ion-label>
+                </ion-item-divider>
+                <ion-list *ngFor="let item of TravelerPassports.controls | keyvalue; let pointIndex=index" [formGroupName]="pointIndex">
+                  <ion-item>
+                    <ion-label >Nationality</ion-label>
+                    <ion-input type="text" aria-placeholder="Nationality" formControlName="nationality"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Passport no.</ion-label>
+                    <ion-input type="text" aria-placeholder="Passport no." formControlName="passport_no"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Issue date</ion-label>
+                    <ion-input type="text" aria-placeholder="Issue date" formControlName="issue_date"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Issue place</ion-label>
+                    <ion-input type="text" aria-placeholder="Issue place" formControlName="issue_place"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Issue country</ion-label>
+                    <ion-input type="text" aria-placeholder="Issue country" formControlName="issue_country"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Expires</ion-label>
+                    <ion-input type="text" aria-placeholder="Expires" formControlName="expires"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>Primary Passport</ion-label>
+                    <ion-checkbox color="dark" formControlName="primary_passport"></ion-checkbox>
+                  </ion-item>
+                  <ion-item *ngIf="item.key > 0" >
+                    <a class="remove_link" (click)="deleteTravelerPassport(pointIndex)" *ngIf="TravelerPassports.length > 1" >remove</a>
+                  </ion-item>
+                </ion-list>
+                <ion-item-divider>
+                  <ion-button color="success" fill="outline" (click)="addTravelerPassport()">
+                    Add more
+                  </ion-button> 
+                </ion-item-divider>
+              </ion-item-group>
+              <ion-item-group formArrayName="visa_informations">
+                <ion-item-divider>
+                  <ion-label>Visa Information</ion-label>
+                </ion-item-divider>
+                <ion-list *ngFor="let item of VisaInformations.controls | keyvalue; let pointIndex=index" [formGroupName]="pointIndex">
+                  <ion-item>
+                    <ion-label >Country</ion-label>
+                    <ion-input type="text" aria-placeholder="Country" formControlName="country"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Number</ion-label>
+                    <ion-input type="text" aria-placeholder="Number" formControlName="number"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Issue date</ion-label>
+                    <ion-input type="text" aria-placeholder="Issue date" formControlName="issue_date"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Expires</ion-label>
+                    <ion-input type="text" aria-placeholder="Expires" formControlName="expires"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label fixed>Entry type</ion-label>
+                    <ion-select formControlName="entry_type">
+                      <ion-select-option value="nes"> - </ion-select-option>
+                      <!-- <ion-select-option value="n64">India</ion-select-option>
+                      <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                    </ion-select>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label fixed>Linked passport</ion-label>
+                    <ion-select formControlName="linked_passport">
+                      <ion-select-option value="nes"> - </ion-select-option>
+                      <!-- <ion-select-option value="n64">India</ion-select-option>
+                      <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                    </ion-select>
+                  </ion-item>
+                  <ion-item *ngIf="item.key > 0" >
+                    <a class="remove_link" (click)="deleteVisaInformation(pointIndex)" *ngIf="VisaInformations.length > 1" >remove</a>
+                  </ion-item>
+                </ion-list>
+                <ion-item-divider>
+                  <ion-button color="success" fill="outline" (click)="addVisaInformation()">
+                    Add more
+                  </ion-button> 
+                </ion-item-divider>
+              </ion-item-group> 
+              <ion-item-group formArrayName="identification_cards">
+                <ion-item-divider>
+                  <ion-label>Identification cards</ion-label>
+                </ion-item-divider>
+                <ion-list *ngFor="let item of IdentificationCards.controls | keyvalue; let pointIndex=index" [formGroupName]="pointIndex">
+                  <ion-item>
+                    <ion-label >Country</ion-label>
+                    <ion-input type="text" aria-placeholder="Country" formControlName="country"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Number</ion-label>
+                    <ion-input type="text" aria-placeholder="Number" formControlName="number"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Issue date</ion-label>
+                    <ion-input type="text" aria-placeholder="Issue date" formControlName="issue_date"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label >Expires</ion-label>
+                    <ion-input type="text" aria-placeholder="Expires" formControlName="expires"></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="item.key > 0" >
+                    <a class="remove_link" (click)="deleteIdentificationCard(pointIndex)" *ngIf="IdentificationCards.length > 1" >remove</a>
+                  </ion-item>
+                </ion-list>
+                <ion-item-divider>
+                  <ion-button color="success" fill="outline" (click)="addIdentificationCard()">
+                    Add more
+                  </ion-button> 
+                </ion-item-divider>
+              </ion-item-group>
+              <ion-list>
+                <ion-item>
+                  <ion-label fixed>Resident Discount</ion-label>
+                  <ion-select >
+                    <ion-select-option value="nes"> - </ion-select-option>
+                    <!-- <ion-select-option value="n64">India</ion-select-option>
+                    <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                  </ion-select>
+                </ion-item> 
+                <ion-item>
+                  <ion-label fixed>Area/Post Code</ion-label>
+                  <ion-select >
+                    <ion-select-option value="nes"> - </ion-select-option>
+                    <!-- <ion-select-option value="n64">India</ion-select-option>
+                    <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                  </ion-select>
+                </ion-item> 
+                <ion-item>
+                  <ion-label fixed>National Identity Card type</ion-label>
+                  <ion-select >
+                    <ion-select-option value="nes"> - </ion-select-option>
+                    <!-- <ion-select-option value="n64">India</ion-select-option>
+                    <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>National Identity Card number</ion-label>
+                  <ion-input type="text" aria-placeholder="National Identity Card number" value=""></ion-input>
+                </ion-item> 
+                <ion-item>
+                  <ion-label fixed>First name</ion-label>
+                  <ion-input type="text" aria-placeholder="First name" value=""></ion-input>
+                </ion-item> 
+                <ion-item>
+                  <ion-label fixed>First Surname</ion-label>
+                  <ion-input type="text" aria-placeholder="First Surname" value=""></ion-input>
+                </ion-item> 
+                <ion-item>
+                  <ion-label fixed>Second Surname</ion-label>
+                  <ion-input type="text" aria-placeholder="Second Surname" value=""></ion-input>
+                </ion-item>             
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+          <ion-card class="ion-margin-top">
+            <ion-card-header style="background-color: whitesmoke;">
+              Trusted Traveler Program
+            </ion-card-header>
+            <ion-card-content style="background-color: #f5faff;">
+              <ion-list>
+                <ion-item>
+                  <ion-label fixed>DHS Redress Number</ion-label>
+                  <ion-input type="text" aria-placeholder="DHS Redress Number"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>Global Entry Number</ion-label>
+                  <ion-input type="text" aria-placeholder="Global Entry Number"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>TSA PreCheck Known Traveler</ion-label>
+                  <ion-input type="text" aria-placeholder="TSA PreCheck Known Traveler"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>NEXUS Number</ion-label>
+                  <ion-input type="text" aria-placeholder="NEXUS Number"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>SENTRI Number</ion-label>
+                  <ion-input type="text" aria-placeholder="SENTRI Number"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>APEC Number</ion-label>
+                  <ion-input type="text" aria-placeholder="APEC Number"></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+          <ion-card class="ion-margin-top">
+            <ion-card-header style="background-color: whitesmoke;">
+                Work Address
+            </ion-card-header>
+            <ion-card-content style="background-color: #f5faff;">
+              <ion-list>
+                <ion-item>
+                  <ion-label fixed>Street1</ion-label>
+                  <ion-input type="text" aria-placeholder="Street1"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>Street2</ion-label>
+                  <ion-input type="text" aria-placeholder="Street2"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>City</ion-label>
+                  <ion-input type="text" aria-placeholder="City"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>State</ion-label>
+                  <ion-select >
+                    <ion-select-option value="nes"> - </ion-select-option>
+                    <!-- <ion-select-option value="n64">India</ion-select-option>
+                    <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>Country</ion-label>
+                  <ion-select >
+                    <ion-select-option value="nes"> - </ion-select-option>
+                    <!-- <ion-select-option value="n64">India</ion-select-option>
+                    <ion-select-option value="ps">Pakistan</ion-select-option> -->
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label fixed>ZIP</ion-label>
+                  <ion-input type="text" aria-placeholder="ZIP"></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+          <ion-card class="ion-margin-top">
+            <ion-card-header style="background-color: whitesmoke;">
+                Comment
+            </ion-card-header>
+            <ion-card-content style="background-color: #f5faff;">
+              <ion-list>
+                <ion-item>
+                  <ion-label fixed>Personal Card</ion-label>
+                  <ion-textarea></ion-textarea>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+          <ion-card class="ion-margin-top">
+            <ion-card-header style="background-color: whitesmoke;">
+                History
+            </ion-card-header>
+            <ion-card-content style="background-color: #f5faff;">
+              <ion-list>
+                
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+      </ion-col>
+      <!-- <ion-col size="12" size-md="5" offset-md="2" size-lg="4" offset-lg="1" style="height: 200px; background-color: darkgoldenrod;"></ion-col> -->
+    </ion-row>
+  </form>
+  </ion-content>
+  

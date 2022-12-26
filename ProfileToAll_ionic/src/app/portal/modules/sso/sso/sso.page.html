@@ -1,0 +1,115 @@
+<ion-content >
+  <ion-item style="margin-top: 60px;">
+    <h1>SSO</h1>
+    <!-- <ion-tab-button> -->
+        <!-- <a class="nav-link"  [routerLink]="['../../../../add-traveler']" skipLocationChange>Add</a> -->
+      <!-- </ion-tab-button> -->
+      <ion-button color="success" fill="outline" [routerLink]="['../../../../add-sso']" skipLocationChange>
+          Add
+          <!-- <ion-icon slot="end" name="create"></ion-icon> -->
+          <ion-icon name="add-circle"></ion-icon>
+      </ion-button>      
+  </ion-item>
+  <div>
+    <ngx-datatable
+      #myTable
+      class="material"
+      [rows]="rows"
+      [columns]="columns"
+      [columnMode]="ColumnMode.force"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      rowHeight="auto"
+      [limit]="10"
+      (page)="onPage($event)"
+    >
+      <!-- Row Detail Template -->
+      <ngx-datatable-row-detail rowHeight="100" #myDetailRow (toggle)="onDetailToggle($event)">
+        <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+          <div style="padding-left:35px;">
+            <div><strong>Address</strong></div>
+            <div> Dimmy</div>
+          </div>
+        </ng-template>
+      </ngx-datatable-row-detail>
+      <!-- Column Templates -->
+      <ngx-datatable-column
+      [width]="50"
+      [resizeable]="false"
+      [sortable]="false"
+      [draggable]="false"
+      [canAutoResize]="false"
+    >
+      <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+        <a
+          href="javascript:void(0)"
+          [class.datatable-icon-right]="!expanded"
+          [class.datatable-icon-down]="expanded"
+          title="Expand/Collapse Row"
+          (click)="toggleExpandRow(row)"
+        >
+        </a>
+      </ng-template>
+    </ngx-datatable-column>
+      <ngx-datatable-column name="name">
+        <ng-template let-column="column" ngx-datatable-header-template>Name</ng-template>
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+    
+      <ngx-datatable-column name="isActive">
+        <ng-template let-column="column" ngx-datatable-header-template>Is Active</ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <!-- {{ value }} -->
+          <ion-toggle slot="start" name="blueberry"  checked *ngIf="value == 1" (ionChange)="changeStatus($event,row,'isActive')"></ion-toggle>
+          <ion-toggle slot="start" name="blueberry"   *ngIf="value == 0" (ionChange)="changeStatus($event, row,'isActive')"></ion-toggle>
+        </ng-template>
+      </ngx-datatable-column>
+    
+      <ngx-datatable-column name="isHidden">
+        <ng-template let-column="column" ngx-datatable-header-template>Is Hidden</ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <ion-toggle slot="start" name="blueberry"  checked *ngIf="value == 1" (ionChange)="changeStatus($event,row,'isHidden')"></ion-toggle>
+          <ion-toggle slot="start" name="blueberry"   *ngIf="value == 0" (ionChange)="changeStatus($event,row,'isHidden')"></ion-toggle>
+        </ng-template>
+      </ngx-datatable-column>
+    
+      <ngx-datatable-column name="isDeleted">
+        <ng-template let-column="column" ngx-datatable-header-template>Is Deleted</ng-template>
+        <ng-template  let-row="row" let-value="value" ngx-datatable-cell-template>
+          <ion-toggle slot="start" name="blueberry"  checked *ngIf="value == 1" (ionChange)="changeStatus($event,row,'isDeleted')"></ion-toggle>
+          <ion-toggle slot="start" name="blueberry"   *ngIf="value == 0" (ionChange)="changeStatus($event,row,'isDeleted')"></ion-toggle>
+        </ng-template>
+      </ngx-datatable-column>
+    
+      <ngx-datatable-column name="createdAt">
+        <ng-template let-column="column" ngx-datatable-header-template>Created At</ng-template>
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{ value | date: 'MM/dd/yyyy'}}
+        </ng-template>
+      </ngx-datatable-column>
+    
+      <ngx-datatable-column name="createdName">
+        <ng-template let-column="column" ngx-datatable-header-template>Created By</ng-template>
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+    
+      <ngx-datatable-column name="updatedAt">
+        <ng-template let-column="column" ngx-datatable-header-template>Updated At</ng-template>
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{ value | date: 'MM/dd/yyyy'}}
+        </ng-template>
+      </ngx-datatable-column>
+    
+      <ngx-datatable-column name="updatedName">
+        <ng-template let-column="column" ngx-datatable-header-template>Updated By</ng-template>
+        <ng-template let-value="value" ngx-datatable-cell-template>
+          {{ value }}
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+</ion-content>

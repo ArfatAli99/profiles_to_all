@@ -1,0 +1,67 @@
+.custom-header{
+    background-color: whitesmoke;
+    height: 32px;
+    padding: 9px;
+    color: #4e4e4e;
+    cursor: pointer;
+}
+.arrow-right{
+    border: solid #686868;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    margin-right: 10px;
+}
+.arrow-down{
+    border: solid #686868;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    margin-right: 10px;
+}
+ion-label {
+    margin-top: -9px;
+    color: #143a54;
+    font-size: 15px !important;
+}
+ion-item {
+    height: 30px;
+}
+ion-item > ion-input{
+    height: 30px;
+    margin-top: -18px;
+}
+.prefernence-table-div{
+    overflow: auto;
+    // background: white;
+}
+.prefernence-table-div > table{
+    width: 100%;
+}
+td, th {
+    padding: 6px;
+    border: 1px solid #c7c7c7;
+}
+.custom-input{
+    border: 1px solid #c7c7c7;
+    border-radius: 8px;
+    height: 30px;
+}
+ion-card-header{
+    border-bottom: 1px solid #c3c3c3;
+}
+.custom-i{
+    margin-left: -5px;
+    position: absolute;
+    margin-top: 10px;
+}
+.appended-tr ion-item{
+    margin-top: 8px;
+}
+ion-input, thead{
+    background: white;
+}

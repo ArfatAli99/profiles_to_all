@@ -1,0 +1,85 @@
+<ion-header *ngIf="user">
+    <ion-tab-bar slot="top">
+      <ion-title class="ion-text-start">
+        <a href="javascript:void(0)" (click)="active_tab = ''" [routerLink]="['/portal/merck/home']"><img class="logo" src="../../../../assets/logo.png" ></a>
+        
+      </ion-title>
+      <ion-tab-button [ngClass]="{'active': active_tab =='traveler'}" (click)="active_tab = 'traveler'" [routerLink]="['/portal/merck/home/traveler']">
+          <!-- <ion-icon name="ribbon"></ion-icon> -->
+          <ion-label>TRAVELER</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [ngClass]="{'active': active_tab =='entity'}" (click)="active_tab = 'entity'" [routerLink]="['/portal/merck/home/entity']" *ngIf="[1,2,3,4].includes(user.pfms_role_id);">
+        <!-- <a class="nav-link"  >ENTITIES</a> -->
+        <ion-label>ENTITIES</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [ngClass]="{'active': active_tab =='agency'}" (click)="active_tab = 'agency'" [routerLink]="['/portal/merck/home/agency']" *ngIf="[1,2,3,4,5].includes(user.pfms_role_id);">
+        <!-- <a class="nav-link"  >AGENCIES</a> -->
+        <ion-label>AGENCIES</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [ngClass]="{'active': active_tab =='sso'}" (click)="active_tab = 'sso'" [routerLink]="['/portal/merck/home/sso']" *ngIf="[1,2,3,4,5].includes(user.pfms_role_id);">
+        <!-- <a class="nav-link"  >AGENCIES</a> -->
+        <ion-label>SSO CONFIG</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [ngClass]="{'active': active_tab =='admin'}" (click)="active_tab = 'admin'" [routerLink]="['/portal/merck/home/administrators']" *ngIf="[1,2,3,4,5].includes(user.pfms_role_id);">
+        <!-- <a class="nav-link">ADMINISTRATORS</a> -->
+        <ion-label>ADMINISTRATORS</ion-label>
+      </ion-tab-button>
+      <ion-tab-button>
+        <!-- <a>PROFILE CENTER</a> -->
+        <ion-label>PROFILE CENTER</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click)="logout()">
+        <!-- <a>INFO</a> -->
+        <ion-label>Logout</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+</ion-header>
+  <ion-header *ngIf="!user">
+      <ion-tab-bar slot="top">
+        <ion-title class="ion-text-start">
+          <img class="logo" src="../../../../assets/logo.png" >
+        </ion-title>
+        <ion-tab-button >
+            <!-- <ion-icon name="ribbon"></ion-icon> -->
+            <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+        </ion-tab-button>
+        <ion-tab-button >
+          <!-- <a class="nav-link"  >ENTITIES</a> -->
+          <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+        </ion-tab-button>
+        <ion-tab-button >
+          <!-- <a class="nav-link"  >AGENCIES</a> -->
+          <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+        </ion-tab-button>
+        <ion-tab-button >
+          <!-- <a class="nav-link">ADMINISTRATORS</a> -->
+          <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+        </ion-tab-button>
+        <ion-tab-button>
+          <!-- <a>PROFILE CENTER</a> -->
+          <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+        </ion-tab-button>
+        <ion-tab-button >
+          <!-- <a>INFO</a> -->
+          <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+        </ion-tab-button>
+      </ion-tab-bar>
+    <!-- <ion-toolbar>
+      <ion-title>Outline Buttons</ion-title>
+      <ion-buttons slot="secondary">
+        <ion-button fill="outline">
+          <ion-icon slot="start" name="star"></ion-icon>
+          Star
+        </ion-button>
+      </ion-buttons>  
+      <ion-buttons slot="primary">
+        <ion-button color="success" fill="outline">
+          Add -->
+          <!-- <ion-icon slot="end" name="create"></ion-icon> -->
+          <!-- <ion-icon name="add-circle"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>-->
+  </ion-header> 
+  <ion-progress-bar></ion-progress-bar>
+  <ion-router-outlet></ion-router-outlet>
